@@ -125,7 +125,7 @@ describe("GET /todos", () => {
                 .end(done);
         });
 
-        it('should return 404 Invalid ID', (done) => {
+        it('should return 404 if Invalid ID', (done) => {
             request(app)
                 .get(`/todos/${todos[0]._id.toHexString()}11`)
                 .expect(404)
@@ -136,7 +136,7 @@ describe("GET /todos", () => {
                 .end(done);
         });
 
-        it('should return 404 No todo was found', (done) => {
+        it('should return 404 if No todo was found', (done) => {
             request(app)
                 .get(`/todos/${new ObjectID()}`)
                 .expect(404)
@@ -149,15 +149,15 @@ describe("GET /todos", () => {
 });
 
 describe("GET /users", () => {
-    // it('should get all users', (done) => {
-    //     request(app)
-    //         .get('/users')
-    //         .expect(200)
-    //         .expect( (res) => {
-    //             expect(res.body.users.length).toBe(2);
-    //         })
-    //         .end(done);
-    // } )
+    it('should get all users', (done) => {
+        request(app)
+            .get('/users')
+            .expect(200)
+            .expect( (res) => {
+                expect(res.body.users.length).toBe(2);
+            })
+            .end(done);
+    } )
 
     describe("GET /users/:id", () => {
 
@@ -171,7 +171,7 @@ describe("GET /users", () => {
             .end(done);
         })
 
-        it('should return 404 Invalid ID', (done) => {
+        it('should return 404 if Invalid ID', (done) => {
             request(app)
                 .get(`/users/${todos[0]._id.toHexString()}11`)
                 .expect(404)
@@ -182,7 +182,7 @@ describe("GET /users", () => {
                 .end(done);
         });
 
-        it('should return 404 No todo was found', (done) => {
+        it('should return 404 if No user was found', (done) => {
             request(app)
                 .get(`/users/${new ObjectID()}`)
                 .expect(404)
