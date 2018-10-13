@@ -1,3 +1,5 @@
+var {mongoose} = require('./../db/mongoose')
+
 var Todo = mongoose.model("Todo", {
     text: {
         type: String,
@@ -35,3 +37,5 @@ var Todo = mongoose.model("Todo", {
 // }, (err) => {
 //     console.log('Document was not saved', err)
 // })
+
+module.exports = {Todo}

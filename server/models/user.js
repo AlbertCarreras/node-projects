@@ -1,3 +1,5 @@
+var {mongoose} = require('./../db/mongoose')
+
 var User = mongoose.model('User', {
     email: {
         type: String,
@@ -16,3 +18,5 @@ var User = mongoose.model('User', {
 //     (doc) => {console.log(JSON.stringify(doc, undefined, 2))},
 //     (err) => {console.log(err)}
 // )
+
+module.exports = {User}
