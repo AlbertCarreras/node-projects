@@ -61,6 +61,8 @@ describe("POST /todos", () => {
                 if (err) {
                     return done(err);
                 }
+                
+                //Mongoose query
                 Todo
                 .find()
                 .then( 
