@@ -14,6 +14,15 @@ var app = express();
 app.use(bodyParser.json());
 
 //Routes
+
+app.get('/todos', (req, res) => {
+    Todo.find().then( (todos) => {
+        res.send({todos});
+    }, (err) => {
+        res.status(400).send(err);
+    })
+})
+
 app.post('/todos', (req, res) => {
     var todo = new Todo( {
         text: req.body.text
@@ -27,3 +36,5 @@ app.post('/todos', (req, res) => {
 app.listen(3000, () => {
     console.log("Started on port 3000");
 });
+
+module.exports = {app};
