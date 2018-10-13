@@ -137,8 +137,9 @@ describe("GET /todos", () => {
         });
 
         it('should return 404 if No todo was found', (done) => {
+            var todoId = new ObjectID().toHexString()
             request(app)
-                .get(`/todos/${new ObjectID()}`)
+                .get(`/todos/${todoId}`)
                 .expect(404)
                 .expect( (res) => {
                     expect(res.text).toBe("No todo was found")
@@ -183,8 +184,9 @@ describe("GET /users", () => {
         });
 
         it('should return 404 if No user was found', (done) => {
+            var objId = new ObjectID().toHexString()
             request(app)
-                .get(`/users/${new ObjectID()}`)
+                .get(`/users/${objId}`)
                 .expect(404)
                 .expect( (res) => {
                     expect(res.text).toBe("No user was found")
